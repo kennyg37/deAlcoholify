@@ -7,7 +7,10 @@ sidebar = html.Div(
         html.Nav(
             [
                 html.A("Home", href="/", className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"),
+
+
                 html.A("Page 1", href="/page-1", className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"),
+
                 html.A("Page 2", href="/page-2", className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"),
             ],
             className="space-y-2"
