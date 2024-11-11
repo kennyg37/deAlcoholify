@@ -1,0 +1,5 @@
+dash
+pandas
+scikit-learn
+numpy
+dash-bootstrap-components
