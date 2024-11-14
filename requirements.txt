@@ -3,3 +3,5 @@ pandas
 scikit-learn
 numpy
 dash-bootstrap-components
+matplotlib
+seaborn

@@ -1,6 +1,7 @@
 from components.data import data_layout
 from components.models import models_layout
-from components.navbar import navbar
+from models.cancer import cancer_model
+# from components.navbar import navbar
 from components.home import home_layout
 from components.sidebar import sidebar
 from components.chatbot import create_chatbot, register_callbacks
@@ -15,15 +16,16 @@ external_stylesheets = ["https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.
 
 app = dash.Dash(__name__, 
            external_scripts=external_scripts,
-           external_stylesheets=external_stylesheets
+           external_stylesheets=external_stylesheets,
+           suppress_callback_exceptions=True
            )
 
 app.layout = html.Div([
     dcc.Location(id="url"),
-    navbar(),
+    
     html.Div([
         sidebar,
-        html.Div(id="page-content", className="ml-40 pt-16 p-5 flex-1") 
+        html.Div(id="page-content", className="ml-40 flex-1 ") 
     ], className="flex"),
     create_chatbot()
 ])
@@ -37,8 +39,10 @@ def display_page(pathname):
         return data_layout()  
     elif pathname == "/models":
         return models_layout()
+    elif pathname == "/models/cancer":
+        return cancer_model()
     else:
-        return home_layout()  # Your home page layout
+        return home_layout() 
 
 register_callbacks(app)
 

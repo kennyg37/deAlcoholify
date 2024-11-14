@@ -50,26 +50,19 @@ data = [
 ]
 df = pd.DataFrame(data)
 
-# Initialize the vectorizer
 vectorizer = TfidfVectorizer()
-
-# Vectorize questions
 question_vectors = vectorizer.fit_transform(df['question'])
 
 def get_answer(user_question):
-    # Vectorize the user's question
     user_question_vector = vectorizer.transform([user_question])
     
-    # Compute similarity with dataset questions
     similarities = cosine_similarity(user_question_vector, question_vectors)
     
-    # Find the best match
     best_match_index = similarities.argmax()
     return df.iloc[best_match_index]['answer']
 
 def create_chatbot():
     return html.Div([
-        # Chatbot trigger button
         html.Button(
             "Chat",
             id="open-chatbot",
@@ -142,3 +135,11 @@ def register_callbacks(app):
             
             return chat_content
         return chat_content
+
+
+def chatbot_button():
+    return html.Button(
+        "Chat",
+        id="open-chatbot",
+        className="fixed bottom-5 right-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg z-50"
+    )
