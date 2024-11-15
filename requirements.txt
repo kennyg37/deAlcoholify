@@ -5,3 +5,4 @@ numpy
 dash-bootstrap-components
 matplotlib
 seaborn
+python-dotenv

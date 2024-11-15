@@ -1,3 +1,4 @@
+import os
 from components.data import data_layout
 from components.models import models_layout
 from models.cancer import cancer_model
@@ -12,6 +13,9 @@ from components.articles.Article2 import Article2
 from components.articles.Article3 import Article3
 from components.articles.Article4 import AlcoholStatistics
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 external_scripts = [
     {'src': 'https://cdn.tailwindcss.com'}
@@ -61,4 +65,5 @@ def display_page(pathname):
 register_callbacks(app)
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    port = int(os.environ.get("PORT", 5000))  
+    app.run_server(host="0.0.0.0", port=port)
