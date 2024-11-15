@@ -1,3 +1,4 @@
+import os
 from components.data import data_layout
 from components.models import models_layout
 from models.cancer import cancer_model
@@ -7,6 +8,9 @@ from components.sidebar import sidebar
 from components.chatbot import create_chatbot, register_callbacks
 from dash import dcc, html
 import dash
+from dotenv import load_dotenv
+
+load_dotenv()
 
 external_scripts = [
     {'src': 'https://cdn.tailwindcss.com'}
@@ -46,6 +50,7 @@ def display_page(pathname):
 
 register_callbacks(app)
 
+port = os.getenv("PORT", 5000)
+
 if __name__ == "__main__":
-    port = 8050
-    app.run_server(debug=True, port=port)
+    app.run(debug=True, port=port)
