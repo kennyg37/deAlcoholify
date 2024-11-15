@@ -6,12 +6,12 @@ Welcome to the deAlcoholify App! This project aims to educate and inform users a
 
 ## 🚀 Deployed App
 
-You can access the live version of the app [here](https://your-deployed-app-link.com).
+You can access the live version of the app [here](https://dealcoholify.onrender.com).
 
 ## 🎥 Video Demo
 
 Check out the demo video of how the app works:  
-[Watch the Demo](https://link-to-video-demo.com)
+[Watch the Demo](https://drive.google.com/drive/folders/1QdDYwiG8SCY5D7xOZjWGfk63MQ80pQ0d?usp=drive_link)
 
 ## 🛠 Project Setup - Local Installation
 
@@ -60,40 +60,31 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory of the project. Add the following environment variables:
 
 ```bash
-FLASK_APP=app.py
-FLASK_ENV=development
-SECRET_KEY=your-secret-key
-DATABASE_URL=your-database-url
+PORT= 3000
 ```
 
-> **Note:** Make sure to replace the values with your actual database URL and secret key.
+> **Note:** Replace with your prefered port.
 
-### 5. Database Setup
 
-If the project uses a database, you'll need to run the migrations to set up the database:
-
-```bash
-flask db upgrade
-```
-
-### 6. Run the App Locally
+### 5. Run the App Locally
 
 To run the app locally, use the following command:
 
 ```bash
-flask run
+python app.py
 ```
 
-Now, open your browser and navigate to `http://127.0.0.1:5000` to view the app.
+Now, open your browser and navigate to `http://127.0.0.1:3000` to view the app.
+
+**Note:** Replace the url with the port you chose
 
 ## 💻 Project Structure
 
 ```
-/alcohol-awareness-app
+/deAlcoholify
     /assets                # Static files (images, styles, etc.)
-    /templates             # HTML templates
-    /src                   # Source code
-    /models                # Database models (if applicable)
+    /components             # Pages and other components
+    /models                # machine learning models and notebooks that created them
     app.py                 # Main app entry point
     requirements.txt       # List of dependencies
     .env                   # Environment variables
