@@ -1,6 +1,9 @@
 import os
+from components.about import about_layout
 from components.data import data_layout
+from components.error import page_notfound
 from components.models import models_layout
+from components.references import reference_layout
 from models.cancer import cancer_model
 # from components.navbar import navbar
 from components.home import home_layout
@@ -51,6 +54,10 @@ def display_page(pathname):
         return models_layout()
     elif pathname == "/models/cancer":
         return cancer_model()
+    elif pathname == "/models/liver":
+        return page_notfound()
+    elif pathname == "/models/mental-health":
+        return page_notfound()
     elif pathname=="/data/impact-alcohol-violence":
         return Article1()
     elif pathname =="/data/whyreducing":
@@ -59,6 +66,10 @@ def display_page(pathname):
         return Article3()
     elif pathname =="/data/statistics":
         return AlcoholStatistics()
+    elif pathname =="/about":
+        return about_layout()
+    elif pathname =="/references":
+        return reference_layout()
     else:
         return home_layout() 
 

@@ -2,16 +2,16 @@ from dash import html, dcc
 
 def about_layout():
     team_members = [
-        {"name": "Ken Ganza", "role": "Backend engineer", "image": "/assets/ken.jpg"},
-        {"name": "Kwihangana Dimitri", "role": "Frontend engineer", "image": "/assets/alice.jpg"},
-        {"name": "Kwizera Alain Bertrand", "role": "Data scientist", "image": "/assets/john.jpg"}
+        {"name": "Ken Ganza", "role": "Full-stack Engineer/ALU", "image": "/assets/ken.jpeg"},
+        {"name": "Kwihangana Dimitri", "role": "Machine Learning Engineer/ALU", "image": "/assets/dimitri.jpeg"},
+        {"name": "Kwizera Alain Bertrand", "role": "Data Analyst/AUCA", "image": "/assets/bertrand.jpeg"}
     ]
     return html.Div([
         html.Div([
             html.H1("About Us", className="text-4xl font-bold text-white mb-4"),
             html.P(
-                "We are a dedicated team of professionals aiming to educate people about the risks of alcohol abuse "
-                "through data visualization and analysis.",
+                "We are a passionate team of engineers and analysts committed to harnessing the power of data and technology "
+                "to fight the global challenge of alcohol abuse. Our goal is to inspire better decision-making through data-driven insights.",
                 className="text-gray-400 mb-8"
             ),
         ], className="text-center bg-gray-900 p-8 shadow-md rounded-lg"),
@@ -20,7 +20,7 @@ def about_layout():
             html.H2("Meet Our Team", className="text-2xl font-bold text-white mb-6 text-center"),
             html.Div([
                 html.Div([
-                    html.Img(src=member['image'], alt=member['name'], className="rounded-full w-24 h-24 mb-4"),
+                    html.Img(src=member['image'], alt=member['name'], className="rounded w-24 h-24 mb-4"),
                     html.H3(member['name'], className="text-white text-xl font-semibold"),
                     html.P(member['role'], className="text-gray-400"),
                 ], className="text-center bg-gray-800 p-4 rounded shadow-lg")
@@ -31,14 +31,16 @@ def about_layout():
         html.Div([
             html.H2("Our Mission", className="text-2xl font-bold text-white mb-4"),
             html.P(
-                "Our mission is to raise awareness and educate individuals about the impact of alcohol consumption, "
-                "using data-driven insights to inspire healthier choices.",
+                "Our mission is to empower individuals with knowledge about the risks of alcohol consumption through "
+                "interactive visualizations, statistical insights, and compelling data narratives. We believe informed "
+                "choices can lead to healthier lives and stronger communities.",
                 className="text-gray-400"
             ),
-            html.H2("Use Case", className="text-2xl font-bold text-white mt-8 mb-4"),
+            html.H2("How Our App Works", className="text-2xl font-bold text-white mt-8 mb-4"),
             html.P(
-                "The app is designed to be an educational tool, providing statistics and visualizations that highlight "
-                "the consequences of alcohol use and promote informed decision-making.",
+                "The app serves as an educational tool, leveraging powerful visualizations to present key statistics on "
+                "alcohol use and its social consequences. Users can explore detailed reports, track trends, and gain valuable "
+                "insights to make informed decisions and contribute to raising awareness about alcohol-related risks.",
                 className="text-gray-400"
             ),
         ], className="bg-gray-900 p-6 rounded-lg shadow-md max-w-screen-lg mx-auto mb-8"),

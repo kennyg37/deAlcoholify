@@ -36,5 +36,5 @@ sidebar = html.Div(
             className="space-y-2"
         ),
     ],
-    className="fixed top-0 left-0 h-full w-40 p-4 bg-gray-800 shadow-lg"
+    className="fixed top-0 left-0 h-full w-40 p-4 bg-gray-800 shadow-lg z-index-1000 "
 )
