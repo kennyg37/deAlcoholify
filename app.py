@@ -7,6 +7,11 @@ from components.sidebar import sidebar
 from components.chatbot import create_chatbot, register_callbacks
 from dash import dcc, html
 import dash
+from components.articles.Article1 import Article1
+from components.articles.Article2 import Article2
+from components.articles.Article3 import Article3
+from components.articles.Article4 import AlcoholStatistics
+
 
 external_scripts = [
     {'src': 'https://cdn.tailwindcss.com'}
@@ -35,12 +40,21 @@ app.layout = html.Div([
     [dash.dependencies.Input("url", "pathname")]
 )
 def display_page(pathname):
+   
     if pathname == "/data":
         return data_layout()  
     elif pathname == "/models":
         return models_layout()
     elif pathname == "/models/cancer":
         return cancer_model()
+    elif pathname=="/data/impact-alcohol-violence":
+        return Article1()
+    elif pathname =="/data/whyreducing":
+        return Article2()
+    elif pathname =="/data/globalimpact":
+        return Article3()
+    elif pathname =="/data/statistics":
+        return AlcoholStatistics()
     else:
         return home_layout() 
 
