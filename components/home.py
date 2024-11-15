@@ -1,14 +1,11 @@
 from dash import html, dcc
 import plotly.express as px
 import plotly.graph_objs as go
+from components.breakdown import create_dashboard_component, gender_alcohol_stats
 
-from components.chatbot import chatbot_button, create_chatbot
+alcohol_use = [56.1, 43.9]  
+binge_drinking_male = [13.7, 2.7]  
 
-# Data for graphs
-alcohol_use = [56.1, 43.9]  # % who have tried alcohol vs. abstinent
-binge_drinking_male = [13.7, 2.7]  # Male vs. Female binge drinking rates
-
-# Pie Chart for Alcohol Use
 fig_alcohol = px.pie(
     names=["Have Tried Alcohol", "Abstinent"],
     values=alcohol_use,
@@ -18,7 +15,6 @@ fig_alcohol = px.pie(
 fig_alcohol.update_traces(textinfo='percent+label', textfont_size=15)
 fig_alcohol.update_layout(paper_bgcolor="rgba(0,0,0,0)", font_color="white")
 
-# Bar Chart for Binge Drinking Rates
 fig_binge_drinking = go.Figure()
 fig_binge_drinking.add_trace(go.Bar(
     x=["Male", "Female"],
@@ -60,12 +56,12 @@ def home_layout():
                 html.Div([
                     html.H2("Alcohol induced deaths(global)", className="font-semibold text-white text-sm"),
                     html.P("3 million", className="text-gray-400"),
-                    dcc.Link("View Study ➜", href="https://www.who.int/news/item/25-06-2024-over-3-million-annual-deaths-due-to-alcohol-and-drug-use-majority-am", className="text-blue-400 underline text-sm italic")
+                    dcc.Link("View Study ➜", href="https://www.who.int/news/item/25-06-2024-over-3-million-annual-deaths-due-to-alcohol-and-drug-use-majority-among-men", className="text-blue-400 underline text-sm italic")
                 ], className="bg-gray-800 p-4 rounded shadow text-center"),
                 html.Div([
                     html.H2("Alcohol Use in Lifetime (Rwanda)", className="font-semibold text-white text-sm"),
                     html.P("56.1%", className="text-gray-400"),
-                    dcc.Link("View Study ➜", href="https://www.who.int/news/item/25-06-2024-over-3-million-annual-deaths-due-to-alcohol-and-drug-use-majority-among-men", className="text-blue-400 underline text-sm italic")
+                    dcc.Link("View Study ➜", href="https://www.rbc.gov.rw", className="text-blue-400 underline text-sm italic")
                 ], className="bg-gray-800 p-4 rounded shadow text-center"),
                 
                 html.Div([
@@ -105,6 +101,36 @@ def home_layout():
                 ], className="w-full lg:w-1/2 p-4"),
                 
             ], className="flex flex-col lg:flex-row max-w-screen-lg mx-auto gap-4"),
+            
+            html.Div([
+                html.H2("Alcohol effects on the body", className="text-white text-2xl font-semibold mb-4"),
+                html.P(
+                    "Alcohol is a depressant that affects the brain and central nervous system. It can impair judgment, coordination, and motor skills, "
+                    "and in large quantities, it can lead to alcohol poisoning and death. Long-term alcohol use can also lead to liver disease, heart disease, "
+                    "and an increased risk of certain cancers. It is important to drink responsibly and seek help if you or someone you know is struggling with alcohol use.",
+                    className="text-gray-400"
+                ),
+                html.Div([
+                    html.H3("Alcohol and mental health", className="text-white text-lg font-semibold mb-4"),
+                    html.P(
+                        "Alcohol use can exacerbate mental health conditions such as depression and anxiety. It can also lead to memory loss, "
+                        "cognitive impairment, and an increased risk to develop mental health disorders. Seeking help from a mental health professional "
+                        "is essential if you are struggling with alcohol use and its effects on your mental health. If you or someone you know is in crisis, please contact a mental health hotline or emergency services immediately.",
+                        className="text-gray-400"
+                    ),
+                    create_dashboard_component()
+                ], className="bg-gray-900 p-6 rounded-lg shadow-md max-w-screen-lg mx-auto mb-8"),
+                html.Div([
+                    html.H3("Alcohol and social impact", className="text-white text-lg font-semibold mb-4"),
+                    html.P(
+                        "Alcohol use can have a significant impact on relationships, work, and social life. It can lead to conflict, violence, and legal problems, "
+                        "and can also contribute to financial difficulties and job loss. It is important to be aware of the social impact of alcohol use and seek help if you are experiencing negative consequences as a result of your drinking.",
+                        className="text-gray-400"
+                    ),
+                    html.P("Below is a simple overview of how alcohol consumption affects relationships and facilitate violence", className="text-gray-400"),
+                    gender_alcohol_stats()
+                ], className="bg-gray-900 p-6 rounded-lg shadow-md max-w-screen-lg mx-auto mb-8"),
+            ], className="p-4 bg-gray-900 min-h-screen pt-16"),
             
         ], className="p-4 bg-gray-900 min-h-screen pt-16"), 
     ])

@@ -47,6 +47,11 @@ data = [
     {"question": "Urubyiruko rukwiye kumenya iki ku ngaruka z'inzoga ku mibanire?", "answer": "Inzoga zishobora kwangiza imibanire ziteza amakimbirane n'ikizere gike hagati y'abantu."},
     {"question": "Ese inzoga zituma umuntu agira akanyabugabo", "answer": "Oya,! ahubwo zigira ingaruka mbi ku mibiri yacu"},
     {"question": "How is alchol harmful", "answer": "Yes, alcohol can be harmful, especially when consumed in excess, leading to liver damage, brain issues, and heart problems.Oya,! ahubwo zigira ingaruka mbi ku mibiri yacu"},
+    {"question": "Hey", "answer": "Hello! How can I help you today?"},
+    {"question": "What is your name?", "answer": "I am a chatbot designed to answer questions about alcohol and its effects on health."},
+    {"question": "What are the effects of alcohol on the body?", "answer": "Alcohol can affect the brain, liver, heart, and other organs, leading to health issues like liver disease, heart problems, and an increased risk of certain cancers."},
+    {"question": "Bite?", "answer": "Ni byiza, nagufasha iki?"},
+    {"question": "Witwa nde?", "answer": "Ndi chatbot iganira nawe ikagusubiza ibibazo byawe ku bijyanye n'inzoga n'ingaruka zazo ku buzima."}
 ]
 df = pd.DataFrame(data)
 
@@ -68,22 +73,19 @@ def create_chatbot():
             id="open-chatbot",
             className="fixed bottom-5 right-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg z-50"
         ),
-        # Chatbot container
+        
         html.Div(
             id="chatbot-container",
-            className="fixed bottom-20 right-5 bg-white w-80 h-124 shadow-lg rounded-lg overflow-hidden hidden z-50",
+            className="fixed bottom-20 right-5 bg-gray-900 w-80 h-124 shadow-lg rounded-lg overflow-hidden hidden z-50 border-4 border-gray-800",
             children=[
-                # Chatbot header
                 html.Div(
                     "Chatbot",
                     className="bg-blue-500 text-white font-bold p-3"
                 ),
-                # Chat content area
                 html.Div(
                     id="chat-content",
                     className="p-3 overflow-y-auto h-64"
                 ),
-                # User input area
                 html.Div(
                     className="p-3 border-t",
                     children=[
@@ -124,7 +126,6 @@ def register_callbacks(app):
         [State('user-input', 'value'), State('chat-content', 'children')]
     )
     def update_chat(n_clicks, user_input, chat_content):
-        # Initialize chat_content as an empty list if it is None
         if chat_content is None:
             chat_content = []
 
