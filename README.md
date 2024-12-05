@@ -22,8 +22,8 @@ To run this project locally, follow the steps below:
 Start by cloning the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/alcohol-awareness-app.git
-cd alcohol-awareness-app
+ git clone https://github.com/kennyg37/deAlcoholify.git
+cd deAlcoholify
 ```
 
 ### 2. Create a Virtual Environment
