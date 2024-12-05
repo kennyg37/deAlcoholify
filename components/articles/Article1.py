@@ -5,19 +5,23 @@ import pandas as pd
 def Article1():
     # Define the page background and text styles
     page_style = {
-        "backgroundColor": "#1A202C",  # Tailwind's bg-gray-900 equivalent
-        "color": "white",  # White text
+        "backgroundColor": "white",  # White background
+        "color": "black",  # Black text
         "padding": "20px",
+        "overflowX": "hidden",  # Prevent horizontal scroll
+        "boxSizing": "border-box",  # Ensure padding doesn't affect width
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",  # Center content horizontally
     }
 
     # Common layout for transparent charts
     chart_layout = {
-        "plot_bgcolor": "rgba(0, 0, 0, 0)",  # Transparent plot background
-        "paper_bgcolor": "rgba(0, 0, 0, 0)",  # Transparent paper background
-        "font": {"color": "white"}  # White text for axes and labels
+        "plot_bgcolor": "rgba(255, 255, 255, 0)",  
+        "paper_bgcolor": "rgba(255, 255, 255, 0)", 
+        "font": {"color": "black"}  
     }
 
-    # Data for each pattern
     data_patterns = {
         "Spouse's Alcohol Consumption and Violence": pd.DataFrame({
             "Spouse's Drinking Frequency": ["Often Drunk", "Does Not Drink"],
@@ -43,7 +47,7 @@ def Article1():
         })
     }
 
-    # Create charts with transparent backgrounds
+    # Create charts with updated background and text colors
     charts = [
         dcc.Graph(
             figure=px.bar(
@@ -51,7 +55,8 @@ def Article1():
                 x="Spouse's Drinking Frequency", 
                 y=["Women Experiencing Violence (%)", "Men Experiencing Violence (%)"],
                 title="Alcohol Consumption and Violence Risk"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Limit chart width
         ),
         dcc.Graph(
             figure=px.bar(
@@ -59,7 +64,8 @@ def Article1():
                 x="Husband's Education Level", 
                 y="Women Experiencing Violence (%)",
                 title="Education Level and Violence Risk (Women)"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Limit chart width
         ),
         dcc.Graph(
             figure=px.bar(
@@ -67,7 +73,8 @@ def Article1():
                 x="Father Beat Mother", 
                 y=["Women Experiencing Violence (%)", "Men Experiencing Violence (%)"],
                 title="Parental Violence and Spousal Abuse Risk"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Limit chart width
         ),
         dcc.Graph(
             figure=px.bar(
@@ -75,7 +82,8 @@ def Article1():
                 x="Fear of Husband", 
                 y="Women Experiencing Violence (%)",
                 title="Fear of Husband and Violence Risk (Women)"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Limit chart width
         ),
         dcc.Graph(
             figure=px.bar(
@@ -83,17 +91,18 @@ def Article1():
                 x="Fear of Wife", 
                 y="Men Experiencing Violence (%)",
                 title="Fear of Wife and Violence Risk (Men)"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Limit chart width
         )
     ]
 
-    # Layout for charts in rows
+    # Layout for charts in rows (2 per row)
     chart_rows = []
     for i in range(0, len(charts), 2):
         chart_rows.append(
             html.Div(
                 children=charts[i:i + 2],  # Add two charts per row
-                style={"display": "flex", "justifyContent": "space-around", "marginBottom": "20px"}
+                style={"display": "flex", "flexWrap": "wrap", "justifyContent": "space-around", "marginBottom": "20px", "gap": "20px"}
             )
         )
 
@@ -105,7 +114,7 @@ def Article1():
                     html.H2(
                         "Alcohol and Gender-Based Violence: Key Findings",
                         className="text-center text-3xl font-bold my-4",
-                        style={"marginBottom": "20px"}
+                        style={"marginBottom": "20px", "color": "#005CAB"}
                     ),
                     html.P(
                         """
@@ -116,7 +125,7 @@ def Article1():
                         health issue.
                         """,
                         className="text-lg",
-                        style={"textAlign": "center", "padding": "0 10%"}
+                        style={"textAlign": "center", "padding": "0 10%", "color": "black"}
                     )
                 ],
                 style={"marginBottom": "40px"}
@@ -124,7 +133,7 @@ def Article1():
             html.H2(
                 "Patterns by Spouse’s Characteristics and Violence Risk",
                 className="text-center text-2xl font-bold my-4",
-                style={"marginBottom": "20px"}
+                style={"marginBottom": "20px", "color": "#005CAB"}
             ),
             html.Div(
                 children=chart_rows

@@ -17,28 +17,28 @@ def reference_layout():
 
     return html.Div([
         html.Div([
-            html.H1("Reference Datasets", className="text-4xl font-bold text-white mb-4"),
+            html.H1("Reference Datasets", className="text-4xl font-bold text-[#005CAB] mb-4"),
             html.P(
                 "Below is a list of datasets used in our analysis. You can download them for further study.",
-                className="text-gray-400 mb-8"
+                className="text-[#005CAB] mb-8"
             ),
-        ], className="text-center bg-gray-900 p-8 shadow-md rounded-lg"),
+        ], className="text-center  p-8  pb-8"),
         
         html.Div([
             html.Div([
-                html.H3(dataset['title'], className="text-xl font-semibold text-white"),
-                html.P(dataset['description'], className="text-gray-400 mb-2"),
+                html.H3(dataset['title'], className="text-xl font-semibold text-[#005CAB]"),
+                html.P(dataset['description'], className="text-black mb-2"),
                 html.A("Get data", href=dataset['link'], className="text-blue-400 underline", target="_blank")
-            ], className="bg-gray-800 p-4 rounded shadow-lg")
+            ], className="bg-white p-4 rounded shadow-lg")
             for dataset in datasets
         ], className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-screen-lg mx-auto"),
         
         html.Div([
             html.Div([
-                html.H3(link['title'], className="text-xl font-semibold text-white"),
+                html.H3(link['title'], className="text-xl font-semibold text-[#005CAB]"),
                 html.A("Read More", href=link['link'], className="text-blue-400 underline")
-            ], className="bg-gray-800 p-4 rounded shadow-lg")
+            ], className="bg-white p-4 rounded shadow-lg")
             for link in additional_links
         ], className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-screen-lg mx-auto mt-8"),
         
-    ], className="p-4 bg-gray-900 min-h-screen")
+    ], className="p-4 bg-white min-h-screen")

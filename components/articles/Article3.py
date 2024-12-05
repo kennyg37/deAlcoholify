@@ -1,68 +1,98 @@
-from dash import Dash, html, dcc
+from dash import html, dcc
 import plotly.graph_objs as go
-import pandas as pd
 
 def Article3():
     # Define the page background and text styles
     page_style = {
-        "backgroundColor": "#1A202C",  # Tailwind's bg-gray-900 equivalent
-        "color": "white",  # White text
+        "backgroundColor": "white",  # Clean white background
+        "color": "black",  # Black text for better readability
         "padding": "20px",
+        "boxSizing": "border-box",
     }
 
-    # Common layout for transparent charts
+    # Common layout for charts
     chart_layout = {
-        "plot_bgcolor": "rgba(0, 0, 0, 0)",  
-        "paper_bgcolor": "rgba(0, 0, 0, 0)",  # Transparent paper background
-        "font": {"color": "white"},  # White text for axes and labels
+        "plot_bgcolor": "rgba(255, 255, 255, 0)",  # Transparent plot background
+        "paper_bgcolor": "rgba(255, 255, 255, 0)",  # Transparent paper background
+        "font": {"color": "black"},  # Black text for axes and labels
     }
 
     # Data for visualizations
     data_death = {
-        'categories': ['Global Deaths (2.6 million)', 'Deaths Among Men (Disproportionate)'],
-        'values': [2.6, 2.1]  # Example values (adjust based on actual data)
+        'categories': ['Global Deaths (2.6M)', 'Deaths Among Men (2.1M)'],
+        'values': [2.6, 2.1]
     }
 
     data_disorder = {
-        'categories': ['People Affected by Alcohol Use Disorders (400 million)', 'Untreated Population'],
-        'values': [400, 350]  # Example values (adjust based on actual data)
+        'categories': ['People with Alcohol Use Disorders (400M)', 'Untreated Cases (350M)'],
+        'values': [400, 350]
     }
 
     data_death_reduction = {
-        'categories': ['Deaths Decreased (20.2%)', 'Deaths Still Occurring'],
-        'values': [20.2, 79.8]  # Example values (adjust based on actual data)
+        'categories': ['Deaths Reduced (20.2%)', 'Remaining Deaths (79.8%)'],
+        'values': [20.2, 79.8]
     }
 
-    # Create charts with transparent backgrounds
+    # Create charts with updated layouts
     death_chart = go.Figure(
-        data=[go.Bar(x=data_death['categories'], y=data_death['values'], marker=dict(color='#FF6347'))],
-        layout=go.Layout(title="Alcohol-Related Deaths", xaxis=dict(title="Category"), yaxis=dict(title="Millions"))
+        data=[go.Bar(
+            x=data_death['categories'],
+            y=data_death['values'],
+            marker=dict(color='#FF6347'),
+            text=[f"{v}M" for v in data_death['values']],
+            textposition='auto'
+        )],
+        layout=go.Layout(
+            title="Alcohol-Related Deaths",
+            xaxis=dict(title="Category"),
+            yaxis=dict(title="Millions")
+        )
     ).update_layout(chart_layout)
 
     disorder_chart = go.Figure(
-        data=[go.Pie(labels=data_disorder['categories'], values=data_disorder['values'], hole=0.3)],
+        data=[go.Pie(
+            labels=data_disorder['categories'],
+            values=data_disorder['values'],
+            hole=0.3,
+            marker=dict(colors=['#4682B4', '#87CEEB'])
+        )],
         layout=go.Layout(title="Alcohol Use Disorder Prevalence")
     ).update_layout(chart_layout)
 
     death_reduction_chart = go.Figure(
-        data=[go.Pie(labels=data_death_reduction['categories'], values=data_death_reduction['values'], hole=0.3)],
+        data=[go.Pie(
+            labels=data_death_reduction['categories'],
+            values=data_death_reduction['values'],
+            hole=0.3,
+            marker=dict(colors=['#32CD32', '#FF4500'])
+        )],
         layout=go.Layout(title="Reduction in Alcohol-Related Deaths (2010–2019)")
     ).update_layout(chart_layout)
 
-    # Layout for charts in rows
+    # Layout for charts
     chart_rows = [
         html.Div(
             children=[
-                dcc.Graph(figure=death_chart),
-                dcc.Graph(figure=disorder_chart),
+                dcc.Graph(figure=death_chart, style={"width": "48%"}),
+                dcc.Graph(figure=disorder_chart, style={"width": "48%"}),
             ],
-            style={"display": "flex", "justifyContent": "space-around", "marginBottom": "20px"}
+            style={
+                "display": "flex",
+                "justifyContent": "space-between",
+                "marginBottom": "20px",
+                "flexWrap": "wrap",
+                "gap": "20px"
+            }
         ),
         html.Div(
             children=[
-                dcc.Graph(figure=death_reduction_chart),
+                dcc.Graph(figure=death_reduction_chart, style={"width": "50%"})
             ],
-            style={"display": "flex", "justifyContent": "center", "marginBottom": "20px"}
+            style={
+                "display": "flex",
+                "justifyContent": "center",
+                "marginBottom": "20px"
+            }
         )
     ]
 
@@ -77,24 +107,31 @@ def Article3():
     return html.Div(
         style=page_style,
         children=[
+            # Article header
             html.Div(
                 children=[
                     html.H1(
                         article_title,
-                        className="text-center text-4xl font-bold my-4",
-                        style={"marginBottom": "20px"}
+                        style={
+                            "textAlign": "center",
+                            "color": "#333333",
+                            "marginBottom": "20px",
+                            "fontSize": "2rem",
+                        }
                     ),
                     html.P(
                         article_intro,
-                        className="text-lg",
-                        style={"textAlign": "center", "padding": "0 10%", "marginBottom": "40px"}
+                        style={
+                            "textAlign": "justify",
+                            "lineHeight": "1.6",
+                            "padding": "0 10%",
+                            "marginBottom": "40px",
+                            "fontSize": "1rem"
+                        }
                     )
                 ]
             ),
-            html.Div(
-                children=chart_rows
-            )
+            # Charts
+            html.Div(children=chart_rows)
         ]
     )
-
-

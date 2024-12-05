@@ -5,16 +5,18 @@ import pandas as pd
 def Article2():
     # Define the page background and text styles
     page_style = {
-        "backgroundColor": "#1A202C",  # Tailwind's bg-gray-900 equivalent
-        "color": "white",  # White text
+        "backgroundColor": "white",  # White background for a clean look
+        "color": "black",  # Black text for contrast
         "padding": "20px",
+        "boxSizing": "border-box",  # Ensure padding doesn't affect width
+        "overflowX": "hidden",  # Prevent horizontal scrolling
     }
 
     # Common layout for transparent charts
     chart_layout = {
-        "plot_bgcolor": "rgba(0, 0, 0, 0)",  
-        "paper_bgcolor": "rgba(0, 0, 0, 0)",  # Transparent paper background
-        "font": {"color": "white"},  # White text for axes and labels
+        "plot_bgcolor": "rgba(255, 255, 255, 0)",  # Transparent plot background
+        "paper_bgcolor": "rgba(255, 255, 255, 0)",  # Transparent paper background
+        "font": {"color": "black"},  # Black text for axes and labels
     }
 
     # African data for charts
@@ -33,7 +35,7 @@ def Article2():
         "Youth Deaths Due to Alcohol (%)": [28, 18]
     })
 
-    # Create charts with transparent backgrounds
+    # Create charts with updated background and text colors
     charts = [
         dcc.Graph(
             figure=px.bar(
@@ -41,7 +43,8 @@ def Article2():
                 x="Region",
                 y="Mortality Increase per Liter of Alcohol (%)",
                 title="Alcohol Consumption and Mortality Increase in Africa"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Responsive chart dimensions
         ),
         dcc.Graph(
             figure=px.bar(
@@ -49,7 +52,8 @@ def Article2():
                 x="Country/Group",
                 y="Income Spent on Alcohol (%)",
                 title="Income Spent on Alcohol by African Countries"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Responsive chart dimensions
         ),
         dcc.Graph(
             figure=px.bar(
@@ -57,7 +61,8 @@ def Article2():
                 x="Region",
                 y="Youth Deaths Due to Alcohol (%)",
                 title="Youth Deaths Attributed to Alcohol in Africa"
-            ).update_layout(chart_layout)
+            ).update_layout(chart_layout),
+            style={"maxWidth": "100%", "height": "400px"}  # Responsive chart dimensions
         )
     ]
 
@@ -66,13 +71,19 @@ def Article2():
     for i in range(0, len(charts), 2):
         chart_rows.append(
             html.Div(
-                children=charts[i:i + 2],  # Add two charts per row
-                style={"display": "flex", "justifyContent": "space-around", "marginBottom": "20px"}
+                children=charts[i:i + 2],  # Add up to two charts per row
+                style={
+                    "display": "flex", 
+                    "justifyContent": "space-around", 
+                    "flexWrap": "wrap", 
+                    "marginBottom": "20px", 
+                    "gap": "20px"
+                }
             )
         )
 
     # Article introduction with African context
-    article_title = "Why is reducing alcohol-related problems a priority in Africa?"
+    article_title = "Why is Reducing Alcohol-Related Problems a Priority in Africa?"
     article_intro = (
         "Alcohol abuse is increasingly becoming a significant public health issue across Africa, contributing to "
         "various health complications, social problems, and economic disruption. The burden of alcohol-related harm "
@@ -85,24 +96,31 @@ def Article2():
     return html.Div(
         style=page_style,
         children=[
+            # Article header
             html.Div(
                 children=[
                     html.H1(
                         article_title,
-                        className="text-center text-4xl font-bold my-4",
-                        style={"marginBottom": "20px"}
+                        style={
+                            "textAlign": "center", 
+                            "color": "#005CAB",  # Blue highlight
+                            "marginBottom": "20px"
+                        }
                     ),
                     html.P(
                         article_intro,
-                        className="text-lg",
-                        style={"textAlign": "center", "padding": "0 10%", "marginBottom": "40px"}
+                        style={
+                            "textAlign": "justify", 
+                            "lineHeight": "1.6", 
+                            "padding": "0 10%", 
+                            "marginBottom": "40px"
+                        }
                     )
                 ]
             ),
+            # Charts
             html.Div(
                 children=chart_rows
             )
         ]
     )
-
-

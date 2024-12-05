@@ -5,56 +5,57 @@ import plotly.graph_objects as go
 def AlcoholStatistics():
     # Define the style for the page
     page_style = {
-        "backgroundColor": "#1A202C",  # Dark background
-        "color": "white",  # White text
+        "backgroundColor": "#121212",  # Darker background for a modern feel
+        "color": "#E0E0E0",  # Light text for contrast
         "padding": "20px",
+        "boxSizing": "border-box",
     }
 
-    # Define the cards for the statistics with 3D effect, dark blue shadow, and padding
+    # Define the cards for the statistics
     cards = [
         dbc.Card(
             dbc.CardBody(
                 [
-                    html.H4("1.34B", className="card-title", style={"fontSize": "1.2rem", "fontWeight": "bold"}),  # Reduced font size
-                    html.H5("Harmful Alcohol Use (2020)", className="card-subtitle", style={"fontSize": "1rem","fontWeight": "bold"}),  # Reduced font size
-                    html.P("Over a billion engaged in harmful drinking.", className="card-text", style={"fontSize": "0.9rem"}),  # Reduced font size
-                ],
-                style={"padding": "15px"}  # Reduced padding
+                    html.H4("1.34B", className="card-title", style={"fontSize": "1.4rem", "fontWeight": "bold"}),  
+                    html.P("Harmful Alcohol Use (2020)", className="card-subtitle", style={"fontSize": "1rem", "fontWeight": "500"}),  
+                    html.P("Over a billion people engaged in harmful drinking.", className="card-text", style={"fontSize": "0.9rem"}),  
+                ]
             ),
-            style={"width": "18rem", "margin": "5px", "boxShadow": "0 8px 16px rgba(0, 0, 139, 0.5)", "borderRadius": "10px", "backgroundColor": "#2D3748", "height": "150px"},
+            style={"width": "22%", "margin": "10px", "boxShadow": "0 4px 12px rgba(0, 0, 0, 0.3)", 
+                   "borderRadius": "10px", "backgroundColor": "#2C2C2C"}
         ),
         dbc.Card(
             dbc.CardBody(
                 [
-                    html.H4("38%", className="card-title", style={"fontSize": "1.2rem", "fontWeight": "bold"}),  # Reduced font size
-                    html.H5("Alcohol-related Deaths", className="card-subtitle", style={"fontSize": "1rem"}),  # Reduced font size
-                    html.P("Nearly 40% of cirrhosis deaths.", className="card-text", style={"fontSize": "0.9rem"}),  # Reduced font size
-                ],
-                style={"padding": "15px"}  # Reduced padding
+                    html.H4("38%", className="card-title", style={"fontSize": "1.4rem", "fontWeight": "bold"}),  
+                    html.P("Alcohol-Related Deaths", className="card-subtitle", style={"fontSize": "1rem", "fontWeight": "500"}),  
+                    html.P("Nearly 40% of cirrhosis deaths.", className="card-text", style={"fontSize": "0.9rem"}),  
+                ]
             ),
-            style={"width": "18rem", "margin": "5px", "boxShadow": "0 8px 16px rgba(0, 0, 139, 0.5)", "borderRadius": "10px", "backgroundColor": "#2D3748", "height": "150px"},
+            style={"width": "22%", "margin": "10px", "boxShadow": "0 4px 12px rgba(0, 0, 0, 0.3)", 
+                   "borderRadius": "10px", "backgroundColor": "#2C2C2C"}
         ),
         dbc.Card(
             dbc.CardBody(
                 [
-                    html.H4("1.8M", className="card-title", style={"fontSize": "1.8rem", "fontWeight": "bold"}),  # Reduced font size
-                    html.H5("Alcohol-related Deaths (2021)", className="card-subtitle", style={"fontSize": "1rem"}),  # Reduced font size
-                    html.P("Millions die due to alcohol each year.", className="card-text", style={"fontSize": "0.9rem"}),  # Reduced font size
-                ],
-                style={"padding": "15px"}  # Reduced padding
+                    html.H4("1.8M", className="card-title", style={"fontSize": "1.4rem", "fontWeight": "bold"}),  
+                    html.P("Alcohol-Related Deaths (2021)", className="card-subtitle", style={"fontSize": "1rem", "fontWeight": "500"}),  
+                    html.P("Millions die due to alcohol each year.", className="card-text", style={"fontSize": "0.9rem"}),  
+                ]
             ),
-            style={"width": "18rem", "margin": "5px", "boxShadow": "0 8px 16px rgba(0, 0, 139, 0.5)", "borderRadius": "10px", "backgroundColor": "#2D3748", "height": "150px"},
+            style={"width": "22%", "margin": "10px", "boxShadow": "0 4px 12px rgba(0, 0, 0, 0.3)", 
+                   "borderRadius": "10px", "backgroundColor": "#2C2C2C"}
         ),
         dbc.Card(
             dbc.CardBody(
                 [
-                    html.H4("77.6%", className="card-title", style={"fontSize": "1.8rem", "fontWeight": "bold"}),  # Reduced font size
-                    html.H5("Male Alcohol Consumption", className="card-subtitle", style={"fontSize": "1rem"}),  # Reduced font size
-                    html.P("Higher alcohol consumption among men.", className="card-text", style={"fontSize": "0.9rem"}),  # Reduced font size
-                ],
-                style={"padding": "15px"}  # Reduced padding
+                    html.H4("77.6%", className="card-title", style={"fontSize": "1.4rem", "fontWeight": "bold"}),  
+                    html.P("Male Alcohol Consumption", className="card-subtitle", style={"fontSize": "1rem", "fontWeight": "500"}),  
+                    html.P("Higher alcohol consumption among men.", className="card-text", style={"fontSize": "0.9rem"}),  
+                ]
             ),
-            style={"width": "18rem", "margin": "5px", "boxShadow": "0 8px 16px rgba(0, 0, 139, 0.5)", "borderRadius": "10px", "backgroundColor": "#2D3748", "height": "150px"},
+            style={"width": "22%", "margin": "10px", "boxShadow": "0 4px 12px rgba(0, 0, 0, 0.3)", 
+                   "borderRadius": "10px", "backgroundColor": "#2C2C2C"}
         ),
     ]
     
@@ -74,11 +75,12 @@ def AlcoholStatistics():
                 title="Harmful Alcohol Consumption by Gender (2020)",
                 xaxis=dict(title="Gender"),
                 yaxis=dict(title="Percentage (%)"),
-                paper_bgcolor="#1A202C",
-                plot_bgcolor="#1A202C",
-                font=dict(color="white"),
+                paper_bgcolor="#121212",
+                plot_bgcolor="#121212",
+                font=dict(color="#E0E0E0"),
             )
-        )
+        ),
+        style={"width": "48%"}
     )
 
     deaths_attributable_chart = dcc.Graph(
@@ -86,18 +88,19 @@ def AlcoholStatistics():
             data=[  
                 go.Pie(
                     labels=["Deaths Attributable to Alcohol Use", "Other Deaths"],
-                    values=[1.8, 58.2],  # 1.8 million out of 60 million total deaths
+                    values=[1.8, 58.2],
                     hole=0.4,
                     marker=dict(colors=["#FF6347", "#4CAF50"]),
                 )
             ],
             layout=go.Layout(
                 title="Deaths Attributable to High Alcohol Use (2021)",
-                paper_bgcolor="#1A202C",
-                plot_bgcolor="#1A202C",
-                font=dict(color="white"),
+                paper_bgcolor="#121212",
+                plot_bgcolor="#121212",
+                font=dict(color="#E0E0E0"),
             )
-        )
+        ),
+        style={"width": "48%"}
     )
     
     # Layout for displaying the cards and charts
@@ -112,9 +115,9 @@ def AlcoholStatistics():
             html.P(
                 "The following charts provide an overview of the harmful impact of alcohol use globally. The first chart highlights the disproportionate consumption of alcohol by gender, with males accounting for the majority of harmful drinking. The second chart illustrates the alarming number of deaths attributable to alcohol use, shedding light on its contribution to global mortality.",
                 className="text-center text-lg",
-                style={"padding": "0 10%", "marginBottom": "40px"}
+                style={"padding": "0 10%", "marginBottom": "40px", "lineHeight": "1.6"}
             ),
-            # Display the cards and charts
+            # Cards section
             html.Div(
                 children=cards,
                 style={
@@ -124,11 +127,13 @@ def AlcoholStatistics():
                     "marginBottom": "40px",
                 }
             ),
+            # Charts section
             html.Div(
                 children=[gender_consumption_chart, deaths_attributable_chart],
                 style={
                     "display": "flex",
-                    
+                    "justifyContent": "space-between",
+                    "flexWrap": "wrap",
                 }
             ),
         ]
