@@ -1,4 +1,4 @@
-from dash import html, dcc
+from dash import html, dcc, callback, Input, Output
 import plotly.express as px
 import plotly.graph_objs as go
 from components.breakdown import create_dashboard_component, gender_alcohol_stats
@@ -46,9 +46,15 @@ def home_layout():
             ], className="hidden md:block w-1/3"),
 
             html.Div([
-                html.Button("Register for our newsletter", className="text-white px-4 py-2 bg-[#005CAB] rounded-lg hover:bg-blue-600"),
+                html.Button(
+                    "Register for our newsletter", 
+                    id="newsletter-button",  
+                    className="text-white px-4 py-2 bg-blue-500 rounded-lg hover:bg-blue-600"
+                ),
+                dcc.Location(id="redirect-location", refresh=True) 
             ])
         ], className="flex items-center p-4 top-0 z-10 justify-between bg-white"),
+
         
         html.Div([
             html.Div([
@@ -131,3 +137,4 @@ def home_layout():
             
         ], className=" bg-white min-h-screen w-full px-4"), 
     ])
+

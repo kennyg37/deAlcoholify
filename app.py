@@ -9,12 +9,13 @@ from models.cancer import cancer_model
 from components.home import home_layout
 from components.sidebar import sidebar
 from components.chatbot import create_chatbot, register_callbacks
-from dash import dcc, html
+from dash import dcc, html, callback, Output, Input
 import dash
 from components.articles.Article1 import Article1
 from components.articles.Article2 import Article2
 from components.articles.Article3 import Article3
 from components.articles.Article4 import AlcoholStatistics
+from components.subscription import subscribe_layout, register_subscribe_callbacks
 
 from dotenv import load_dotenv
 
@@ -70,10 +71,22 @@ def display_page(pathname):
         return about_layout()
     elif pathname =="/references":
         return reference_layout()
+    elif pathname == "/subscribe":
+        return subscribe_layout()
     else:
         return home_layout() 
 
+register_subscribe_callbacks(app)
 register_callbacks(app)
+
+@callback(
+    Output("redirect-location", "href"),
+    Input("newsletter-button", "n_clicks"),
+)
+def redirect_to_newsletter(n_clicks):
+    if n_clicks:
+        return "/subscribe"  
+    return None
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  
