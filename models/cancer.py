@@ -16,18 +16,18 @@ def cancer_model():
                 "This model is for educational purposes only and should not replace medical advice.",
                 className="text-gray-400 mb-6"
             ),
-        ], className="text-center bg-gray-900 p-6 rounded shadow-md mb-6"),
+        ], className="text-center bg-[#005CAB] p-6 rounded shadow-md mb-6"),
         
         # Form inputs
         html.Div([
             html.Div([
                 html.Div([
-                    html.Label("Age", className="text-gray-700"),
+                    html.Label("Age", className="text-white"),
                     dcc.Input(type="number", id="age", placeholder="Enter your age", className="w-full p-2 border rounded"),
                 ], className="mb-4"),
 
                 html.Div([
-                    html.Label("Gender", className="text-gray-700"),
+                    html.Label("Gender", className="text-white"),
                     dcc.Dropdown(
                         id="gender",
                         options=[
@@ -42,12 +42,12 @@ def cancer_model():
 
             html.Div([
                 html.Div([
-                    html.Label("BMI", className="text-gray-700"),
+                    html.Label("BMI", className="text-white"),
                     dcc.Input(type="number", id="bmi", placeholder="Enter your BMI", className="w-full p-2 border rounded"),
                 ], className="mb-4"),
 
                 html.Div([
-                    html.Label("Smoking", className="text-gray-700"),
+                    html.Label("Smoking", className="text-white"),
                     dcc.Dropdown(
                         id="smoking",
                         options=[
@@ -64,7 +64,7 @@ def cancer_model():
         html.Div([
             html.Div([
                 html.Div([
-                    html.Label("Genetic Risk", className="text-gray-700"),
+                    html.Label("Genetic Risk", className="text-white"),
                     dcc.Dropdown(
                         id="genetic_risk",
                         options=[
@@ -78,19 +78,19 @@ def cancer_model():
                 ], className="mb-4"),
 
                 html.Div([
-                    html.Label("Physical Activity (hours/week)", className="text-gray-700"),
+                    html.Label("Physical Activity (hours/week)", className="text-white"),
                     dcc.Input(type="number", id="physical_activity", placeholder="Enter hours per week", className="w-full p-2 border rounded"),
                 ], className="mb-4"),
             ], className="w-1/2 p-2"),
 
             html.Div([
                 html.Div([
-                    html.Label("Alcohol Intake Scale 1-5", className="text-gray-700"),
+                    html.Label("Alcohol Intake Scale 1-5", className="text-white"),
                     dcc.Input(type="number", id="alcohol_intake", placeholder="Enter intake scale", className="w-full p-2 border rounded"),
                 ], className="mb-4"),
 
                 html.Div([
-                    html.Label("Cancer History", className="text-gray-700"),
+                    html.Label("Cancer History", className="text-white"),
                     dcc.Dropdown(
                         id="cancer_history",
                         options=[
@@ -109,7 +109,7 @@ def cancer_model():
             html.Button("Submit", id="submit-button", n_clicks=0, className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600 w-full"),
             html.Div(id="prediction-output", className="mt-4 text-lg font-semibold text-center text-gray-900 bg-white rounded shadow p-4"),
         ], className="max-w-md mx-auto p-4"),
-    ], className="bg-gray-900 min-h-screen p-4")
+    ], className="bg-[#005CAB] min-h-screen p-4")
 
 @callback(
     Output("prediction-output", "children"),
